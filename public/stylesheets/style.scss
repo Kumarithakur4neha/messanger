@@ -17,12 +17,19 @@ main {
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: column; /* Make it column by default */
+
+    @media (min-width: 768px) {
+        flex-direction: row; /* Change to row on larger screens */
+    }
 
     .user {
         display: flex;
         gap: 1rem;
         align-items: center;
         cursor: pointer;
+
+        
 
         img {
             height: 3rem;
@@ -35,20 +42,38 @@ main {
             font-weight: 400;
             font-size: 1.6rem;
         }
+        @media (max-width: 768px) {
+            flex-direction: row;
+           
+    
+            img {
+                height: 2.5rem;
+                width: 2.5rem;
+            }
+    
+            h1 {
+                font-size: 1.3rem;
+                margin-top: 0.5rem; /* Example: Adding margin for spacing */
+            }
+        }
     }
 
     .left {
-        width: 30%;
-        height: 100%;
+        width: 100%;
+        height: 50%; /* Adjust height for small screens */
         background-color: #191919;
 
+        @media (min-width: 600px) {
+            width: 30%;
+            height: 100%; /* Full height on larger screens */
 
+           
+        }
 
         .top {
             padding: 4rem 2rem;
             padding-bottom: 3rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.28);
-            
         }
 
         .bottom {
@@ -58,32 +83,30 @@ main {
                 display: flex;
                 flex-direction: column;
                 gap: 2rem;
-                
-                
-               
 
                 .user {
                     padding: 0.5rem 2rem;
-                    
-               
                     border-bottom: 1px solid rgba(255, 255, 255, 0.142);
 
                     &:nth-last-child(1) {
                         border-bottom: none;
                     }
-
                 }
-
             }
-
         }
     }
 
     .right {
-        width: 70%;
-        height: 100%;
+        width: 100%;
+        height: 100%; /* Adjust height for small screens */
         background-color: #000000;
         display: none;
+
+        @media (min-width: 768px) {
+            width: 70%;
+            height: 100%; /* Full height on larger screens */
+            display: none;
+        }
 
         .topUser {
             padding: 1rem 2rem;
@@ -137,7 +160,6 @@ main {
                 .message:not(:has(img)) {
                     margin-left: auto;
                 }
-
             }
 
             .inputs {
@@ -171,18 +193,12 @@ main {
                     border: none;
                     outline: none;
                     display: none;
+
+                    @media (min-width: 768px) {
+                        display: block;
+                    }
                 }
             }
         }
-    }
-
-}
-
-@media (max-width:600px) {
-    .left{
-        width: 50%;
-    }
-    .right{
-        width: 50%;
     }
 }

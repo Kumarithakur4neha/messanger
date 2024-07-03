@@ -17,6 +17,12 @@ main {
   height: 100%;
   width: 100%;
   display: flex;
+  flex-direction: column; /* Make it column by default */
+}
+@media (min-width: 768px) {
+  main {
+    flex-direction: row; /* Change to row on larger screens */
+  }
 }
 main .user {
   display: flex;
@@ -35,10 +41,29 @@ main .user h1 {
   font-weight: 400;
   font-size: 1.6rem;
 }
+@media (max-width: 768px) {
+  main .user {
+    flex-direction: row;
+  }
+  main .user img {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  main .user h1 {
+    font-size: 1.3rem;
+    margin-top: 0.5rem; /* Example: Adding margin for spacing */
+  }
+}
 main .left {
-  width: 30%;
-  height: 100%;
+  width: 100%;
+  height: 50%; /* Adjust height for small screens */
   background-color: #191919;
+}
+@media (min-width: 600px) {
+  main .left {
+    width: 30%;
+    height: 100%; /* Full height on larger screens */
+  }
 }
 main .left .top {
   padding: 4rem 2rem;
@@ -61,10 +86,17 @@ main .left .bottom .users .user:nth-last-child(1) {
   border-bottom: none;
 }
 main .right {
-  width: 70%;
-  height: 100%;
+  width: 100%;
+  height: 100%; /* Adjust height for small screens */
   background-color: #000000;
   display: none;
+}
+@media (min-width: 768px) {
+  main .right {
+    width: 70%;
+    height: 100%; /* Full height on larger screens */
+    display: none;
+  }
 }
 main .right .topUser {
   padding: 1rem 2rem;
@@ -143,12 +175,8 @@ main .right .conversation .inputs button {
   outline: none;
   display: none;
 }
-
-@media (max-width: 600px) {
-  .left {
-    width: 50%;
+@media (min-width: 768px) {
+  main .right .conversation .inputs button {
+    display: block;
   }
-  .right {
-    width: 50%;
-  }
-}/*# sourceMappingURL=style.css.map */    
+}/*# sourceMappingURL=style.css.map */
